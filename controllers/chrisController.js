@@ -4,7 +4,7 @@ import Shows from '../schemas/chrisSchema.js'
 export const getAllPosts = (req, res) => {
   Shows.find({})
     .then(results => {
-      res.startus(200).send(resulsts);
+      res.startus(200).send(results);
     })
     .catch(err => {
       res.status(400).send(err);
