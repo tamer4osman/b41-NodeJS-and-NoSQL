@@ -19,9 +19,15 @@ export const getSinglePost = (req, res) => {
 
 // POST /createPost
 export const createPost = (req, res) => {
-  const { body } = req;
-  console.log(body);
-  res.send('Chris post');
+  const { title, director, producer, year, description } = req.body;
+
+  Shows.create({ title, director, producer, year, description })
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    })
 };
 
 // PUT /editSinglePost
