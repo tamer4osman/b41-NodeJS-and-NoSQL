@@ -1,34 +1,20 @@
-import { Router } from 'express'
-const benRouter = Router()
+import {Router} from "express";
+import { getAllPosts, getSinglePost, createPost, editSinglePost, deleteSinglePost } from "../controllers/ecaControllers.js";
+const app = Router();
 
-benRouter.get('/getAllPosts', (req, res) => {
-  res.send('Ben get')
-})
+// GET /getAllPosts
+app.get("/getAllPosts", getAllPosts);
 
 // GET /getSinglePost/:id
-benRouter.get("/getSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("BEN GET SINGLE post WITH ID OF " + id);
-});
+app.get("/getSinglePost/:id", getSinglePost);
 
 // POST /createPost
-benRouter.post("/createPost", (req, res) => {
-    const body = req.body;
-    console.log(body)
-    res.send("BEN POST CREATE NEW POST");
-});
+app.post("/createPost", createPost);
 
 // PUT /editSinglePost/:id
-benRouter.put("/editSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("BEN PUT SINGLE post WITH ID OF " + id);
-});
+app.put("/editSinglePost/:id", editSinglePost);
 
 // DELETE /deleteSinglePost/:id
-benRouter.delete("/deleteSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("BEN DELETE SINGLE post WITH ID OF " + id);
-});
+app.delete("/deleteSinglePost/:id", deleteSinglePost);
 
-
-export default benRouter;
+export default app;
