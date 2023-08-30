@@ -1,34 +1,20 @@
 import { Router } from 'express'
+import { getAllPosts, getSinglePost, createPost, editSinglePost, deleteSinglePost } from '../controllers/chrisController.js'
 const chrisRouter = Router();
 
 // GET /getAllPosts
-chrisRouter.get('/getAllPosts', (req, res) => {
-  res.send('Chris get');
-})
+chrisRouter.get('/getAllPosts', getAllPosts);
 
 // GET /getSinglePost/:id
-chrisRouter.get('/getSinglePost/:id', (req, res) => {
-  const { id } = req.params;
-  res.send('Chris get single ' + id);
-})
+chrisRouter.get('/getSinglePost/:id', getSinglePost);
 
 // POST /createPost
-chrisRouter.post('/createPost', (req, res) => {
-  const { body } = req;
-  console.log(body);
-  res.send('Chris post');
-})
+chrisRouter.post('/createPost', createPost);
 
 // PUT /editSinglePost/:id
-chrisRouter.put('/editSinglePost/:id', (req, res) => {
-  const { id } = req.params;
-  res.send('Chris put ' + id);
-})
+chrisRouter.put('/editSinglePost/:id', editSinglePost);
 
 // DELETE /deleteSinglePost/:id
-chrisRouter.delete('/deleteSinglePost/:id', (req, res) => {
-  const { id } = req.params;
-  res.send('Chris delete ' + id);
-})
+chrisRouter.delete('/deleteSinglePost/:id', deleteSinglePost);
 
 export default chrisRouter;

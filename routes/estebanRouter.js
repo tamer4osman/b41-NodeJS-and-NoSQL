@@ -1,5 +1,5 @@
 import {Router} from "express";
-import { getAllPosts, getSinglePost, createPost, editSinglePost, deleteSinglePost } from "../controllers/estebanControllers.js";
+import { getAllPosts, getSinglePost, createPost, editSinglePost, deleteSinglePost } from "../controllers/estebanController.js";
 const app = Router();
 
 // GET /getAllPosts

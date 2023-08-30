@@ -1,31 +1,22 @@
 import {Router} from "express";
+import { getAllPosts,
+     getSinglePost, createPost, editSinglePost, deleteSinglePost 
+    } from "../controllers/tamerControllers.js";
 const app = Router();
 
-app.get("/getAllPosts", (req, res) => {
-    res.send("work");
-});
+// GET /getAllPosts
+app.get("/getAllPosts", getAllPosts);
 
-app.get("/getSinglePost/:id", (req, res) => {
-    const id = req.params.id
-    res.send("Give me the ID, I will give you the information"+id);
-});
+// GET /getSinglePost/:id
+app.get("/getSinglePost/:id", getSinglePost);
 
-app.post("/createPost/", (req, res) => {
-    const body = req.body
-    console.log(body)
-    res.send("Look to my body hahaha");
-});
+// POST /createPost
+app.post("/createPost", createPost);
 
+// PUT /editSinglePost/:id
+app.put("/editSinglePost/:id", editSinglePost);
 
-app.put("/editSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("Edit me " + id);
-});
-
-app.delete("/deleteSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("Don't delete me please " + id);
-});
-
+// DELETE /deleteSinglePost/:id
+app.delete("/deleteSinglePost/:id", deleteSinglePost);
 
 export default app;

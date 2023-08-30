@@ -1,33 +1,20 @@
 import {Router} from "express";
+import { getAllPosts, getSinglePost, createPost, editSinglePost, deleteSinglePost } from "../controllers/jerryControllers.js";
 const app = Router();
 
-app.get("/getAllPosts", (req, res) => {
-    res.send("this too shall pass LFG");
-});
+// GET /getAllPosts
+app.get("/getAllPosts", getAllPosts);
 
 // GET /getSinglePost/:id
-app.get("/getSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("All the single ladies (post) " + id);
-});
+app.get("/getSinglePost/:id", getSinglePost);
 
 // POST /createPost
-app.post("/createPost", (req, res) => {
-    const body = req.body;
-    console.log(body)
-    res.send("Create new post");
-});
+app.post("/createPost", createPost);
 
 // PUT /editSinglePost/:id
-app.put("/editSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("JERRY PUT SINGLE post WITH ID OF " + id);
-});
+app.put("/editSinglePost/:id", editSinglePost);
 
 // DELETE /deleteSinglePost/:id
-app.delete("/deleteSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("JERRY DELETE SINGLE post WITH ID OF " + id);
-});
+app.delete("/deleteSinglePost/:id", deleteSinglePost);
 
 export default app;

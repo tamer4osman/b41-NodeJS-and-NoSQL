@@ -1,35 +1,20 @@
 import {Router} from "express";
-
+import { getAllPosts, getSinglePost, createPost, editSinglePost, deleteSinglePost } from "../controllers/ecaControllers.js";
 const app = Router();
 
-app.get("/getAllPosts", (req, res) => {
-    res.send("susanna get");
-});
+// GET /getAllPosts
+app.get("/getAllPosts", getAllPosts);
 
 // GET /getSinglePost/:id
-app.get("/getSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("Susanna get single post " + id);
-});
+app.get("/getSinglePost/:id", getSinglePost);
 
 // POST /createPost
-app.post("/createPost", (req, res) => {
-    const body = req.body;
-    console.log(body)
-    res.send("Susanna create post");
-});
+app.post("/createPost", createPost);
 
 // PUT /editSinglePost/:id
-app.put("/editSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("Susanna get single post " + id);
-});
+app.put("/editSinglePost/:id", editSinglePost);
 
 // DELETE /deleteSinglePost/:id
-app.delete("/deleteSinglePost/:id", (req, res) => {
-    const id = req.params.id;
-    res.send("HOW DARE YOU DELETE THIS " + id);
-});
-
+app.delete("/deleteSinglePost/:id", deleteSinglePost);
 
 export default app;
