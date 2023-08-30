@@ -1,7 +1,11 @@
-import {Router} from "express";
-import { getAllPosts,
-     getSinglePost, createPost, editSinglePost, deleteSinglePost 
-    } from "../controllers/tamerControllers.js";
+import { Router } from "express";
+import {
+  getAllPosts,
+  getSinglePost,
+  createPost,
+  editSinglePost,
+  deleteSinglePost,
+} from "../controllers/tamerControllers.js";
 const app = Router();
 
 // GET /getAllPosts

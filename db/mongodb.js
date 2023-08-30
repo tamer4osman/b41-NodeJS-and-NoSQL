@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 
-const mongoDB = `mongodb+srv://${username}:${password}@sandbox.apxur.mongodb.net/batch41`;
+const mongoDB = `mongodb+srv://${username}:${password}@cluster0.ksmrrqt.mongodb.net/batch41`;
 
 
 mongoose.connect(mongoDB);

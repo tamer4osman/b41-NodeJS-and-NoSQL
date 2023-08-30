@@ -1,29 +1,73 @@
+import Posts from "../schemas/tamerSchema.js";
+
 // GET /getAllPosts
 export const getAllPosts = (req, res) => {
-    res.send("work");
+  Posts.find({})
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 // GET /getSinglePost/:id
 export const getSinglePost = (req, res) => {
-    const id = req.params.id
-    res.send("Give me the ID, I will give you the information"+id);
+  Posts.find({ _id: req.params.id })
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  // Posts.findOne({_id: req.params.id})
+  // .then(results => {
+  //     res.status(200).send(results)
+  // })
+  // .catch(err => {
+  //     console.log(err);
+  // })
 };
 
 // POST /createPost
 export const createPost = (req, res) => {
-    const body = req.body
-    console.log(body)
-    res.send("Look to my body hahaha");
+  const { title, author, body } = req.body;
+  try {
+    Posts.create({ title: title, author: author, body: body }).then(
+      (newPost) => {
+        res.status(200).send(newPost);
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // PUT /editSinglePost/:id
 export const editSinglePost = (req, res) => {
-    const id = req.params.id;
-    res.send("Edit me " + id);
+  const { id } = req.params;
+  const { title, author, body } = req.body;
+
+  Posts.findByIdAndUpdate(
+    { _id: id },
+    { title: title, author: author, body: body }
+  )
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 // DELETE /deleteSinglePost/:id
 export const deleteSinglePost = (req, res) => {
-    const id = req.params.id;
-    res.send("Don't delete me please " + id);
+  Posts.findByIdAndDelete({ _id: req.params.id })
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
