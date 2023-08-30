@@ -21,3 +21,4 @@ export const getOnePostByID = (req, res) => {console.log("getOnePostByID")}
 export const editPostByID = (req, res) => {console.log("editPostByID")}
 
 export const deletePostByID = (req, res) => {console.log("deletePostByID")}
+

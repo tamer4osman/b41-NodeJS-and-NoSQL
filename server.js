@@ -1,8 +1,5 @@
 import dotenv from "dotenv";
 import express from "express";
-import mongoose from "mongoose";
-import Posts from "./schemas/postSchema.js";
-import db from "./db/mongodb.js";
 import postsRouter from "./routes/postsRouter.js";
 
 dotenv.config()
@@ -10,11 +7,27 @@ dotenv.config()
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
+// ROUTES
 app.use("/posts", postsRouter)
+// ECA ROUTES
+
+// OLE ROUTES
+
+// CHRIS ROUTES
+
+// TAMER ROUTES
+
+// JERRY ROUTES
+
+// BEN ROUTES
+
+// SUS ROUTES
+
+// VIJ ROUTES
+
+// ESTEBAN ROUTES
+
+
 
 
 app.listen(port, () =>
