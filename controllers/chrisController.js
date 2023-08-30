@@ -1,6 +1,14 @@
 // GET /getAllPosts
+import Shows from '../schemas/chrisSchema.js'
+
 export const getAllPosts = (req, res) => {
-  res.send('Chris get');
+  Shows.find({})
+    .then(results => {
+      res.startus(200).send(resulsts);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    })
 };
 
 // GET /getSinglePost/:id
