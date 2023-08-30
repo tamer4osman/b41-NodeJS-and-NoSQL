@@ -39,8 +39,18 @@ export const createPost = (req, res) => {
 
 // PUT /editSinglePost
 export const editSinglePost = (req, res) => {
-  const { id } = req.params;
-  res.send('Chris put ' + id);
+  const { body, params: { id } } = req;
+
+  // it seems like body will only contain the fields send,
+  // so we might be able to send it directly to MangoDB...
+  // Who needs validation of input, right? :P
+  Shows.findOneAndUpdate({ _id: id }, { ...body }, { new: true })
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    })
 };
 
 // DELETE /deleteSinglePost
