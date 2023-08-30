@@ -1,29 +1,70 @@
+import Posts from "../schemas/postSchema.js";
+
 // GET /getAllPosts
 export const getAllPosts = (req, res) => {
-    res.send("eca get all posts");
+    Posts.find({})
+    .then(results => {
+        res.status(200).send(results)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 };
 
 // GET /getSinglePost/:id
 export const getSinglePost = (req, res) => {
-    const id = req.params.id;
-    res.send("ECA GET SINGLE post WITH ID OF " + id);
+    Posts.find({_id: req.params.id})
+    .then(results => {
+        res.status(200).send(results)
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+    // Posts.findOne({_id: req.params.id})
+    // .then(results => {
+    //     res.status(200).send(results)
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    // })
 };
 
 // POST /createPost
 export const createPost = (req, res) => {
-    const body = req.body;
-    console.log(body)
-    res.send("ECA POST CREATE NEW POST");
+    const {title, author, body} = req.body;
+    try{
+        Posts
+        .create({ title: title, author: author, body: body })
+        .then(newPost => {
+          res.status(200).send(newPost);
+        })
+    }catch(err){
+        console.log(err);
+    }
 };
 
 // PUT /editSinglePost/:id
 export const editSinglePost = (req, res) => {
-    const id = req.params.id;
-    res.send("ECA PUT SINGLE post WITH ID OF " + id);
+    const {id} = req.params;
+    const {title, author, body} = req.body;
+
+    Posts.findByIdAndUpdate({_id: id}, {title: title, author: author, body: body})
+    .then(results => {
+        res.status(200).send(results)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 };
 
 // DELETE /deleteSinglePost/:id
 export const deleteSinglePost = (req, res) => {
-    const id = req.params.id;
-    res.send("ECA DELETE SINGLE post WITH ID OF " + id);
+    Posts.findByIdAndDelete({ _id: req.params.id })
+    .then(results => {
+        res.status(200).send(results)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 };

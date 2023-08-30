@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
+import db from "./db/mongodb.js";
 import postsRouter from "./routes/postsRouter.js";
 import ecaRouter from "./routes/ecaRouter.js";
 import jerryRouter from "./routes/jerryRouter.js";
@@ -22,7 +23,7 @@ app.use(bodyParser.json());
 app.use("/posts", postsRouter)
 // ECA ROUTES
 app.use("/eca", ecaRouter)
-// OLE ROUTES
+// OLEKSIY ROUTES
 app.use('/oleksiy', oleksiyRouter)
 // CHRIS ROUTES
 app.use('/chris', chrisRouter)

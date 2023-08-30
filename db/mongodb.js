@@ -2,10 +2,11 @@ import dotenv from "dotenv";
 dotenv.config()
 import mongoose from 'mongoose';
 
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
 
-const mongoDB = `mongodb+srv://${username}:${password}@sandbox.apxur.mongodb.net/`;
+const mongoDB = `mongodb+srv://${username}:${password}@sandbox.apxur.mongodb.net/batch41`;
+
 
 mongoose.connect(mongoDB);
 
