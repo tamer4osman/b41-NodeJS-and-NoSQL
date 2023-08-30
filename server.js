@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
+import bodyParser from "body-parser";
 import postsRouter from "./routes/postsRouter.js";
 import ecaRouter from "./routes/ecaRouter.js";
 import jerryRouter from "./routes/jerryRouter.js";
@@ -14,6 +15,8 @@ dotenv.config()
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
 
 // ROUTES
 app.use("/posts", postsRouter)

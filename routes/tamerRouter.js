@@ -5,7 +5,7 @@ app.get("/getAllPosts", (req, res) => {
     res.send("work");
 });
 
-app.get("/getSingalePost/:id", (req, res) => {
+app.get("/getSinglePost/:id", (req, res) => {
     const id = req.params.id
     res.send("Give me the ID, I will give you the information"+id);
 });

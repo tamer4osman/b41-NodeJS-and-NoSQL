@@ -13,19 +13,19 @@ app.get("/getSinglePost/:id", (req, res) => {
 
 // POST /createPost
 app.post("/createPost", (req, res) => {
-    const body = req.params.body;
+    const body = req.body;
     console.log(body)
-    res.send("Vijaya create new post" +id);
+    res.send("Vijaya create new post");
 });
 
 // PUT /editPost
-app.put("//editSinglePost/:id", (req, res) => {
+app.put("/editSinglePost/:id", (req, res) => {
     const id = req.params.id;
     res.send("Vijaya edit the Post"+id)
 })
 
 // DELETE /editPost
-app.delete("/editPost/:id/:name", (req, res) => {
+app.delete("/deleteSinglePost/:id", (req, res) => {
     const { id } = req.params;
     res.send("Vijaya delete the Post"+id)
 })
