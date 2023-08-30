@@ -14,7 +14,14 @@ export const getAllPosts = (req, res) => {
 // GET /getSinglePost/:id
 export const getSinglePost = (req, res) => {
   const { id } = req.params;
-  res.send('Chris get single ' + id);
+
+  Shows.findOne({ _id: id })
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    })
 };
 
 // POST /createPost
