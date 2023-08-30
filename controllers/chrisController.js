@@ -56,5 +56,12 @@ export const editSinglePost = (req, res) => {
 // DELETE /deleteSinglePost
 export const deleteSinglePost = (req, res) => {
   const { id } = req.params;
-  res.send('Chris delete ' + id);
+
+  Shows.findOneAndDelete({ _id: id })
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(418).send(err);
+    })
 };
